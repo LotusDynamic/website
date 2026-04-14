@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at top left, #050712 0%, #020205 40%, #000000 100%);
+  color: #ffffff;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+.page-shell {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.nebula {
+  position: absolute;
+  inset: 0;
+  filter: blur(40px);
+  opacity: 0.85;
+}
+
+.nebula-1 {
+  background: radial-gradient(circle at 16% 24%, rgba(104, 85, 255, 0.32), transparent 20%);
+}
+
+.nebula-2 {
+  background: radial-gradient(circle at 80% 20%, rgba(88, 209, 255, 0.18), transparent 20%);
+}
+
+.nebula-3 {
+  background: radial-gradient(circle at 50% 74%, rgba(250, 129, 255, 0.22), transparent 18%);
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.stars.small {
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.9) 0.7px, transparent 0.7px),
+    radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px);
+  background-size: 20px 20px, 42px 42px;
+  opacity: 0.36;
+}
+
+.stars.medium {
+  background-image:
+    radial-gradient(circle, rgba(216, 229, 255, 0.7) 1.35px, transparent 1.35px),
+    radial-gradient(circle, rgba(180, 207, 255, 0.45) 1.1px, transparent 1.1px);
+  background-size: 82px 82px, 128px 128px;
+  opacity: 0.26;
+}
+
+.stars.large {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.25) 2px, transparent 2px);
+  background-size: 180px 180px;
+  opacity: 0.18;
+}
+
+.stars.colored {
+  background-image:
+    radial-gradient(circle, rgba(255, 153, 102, 0.9) 1.1px, transparent 1.1px),
+    radial-gradient(circle, rgba(115, 234, 255, 0.8) 1.2px, transparent 1.2px),
+    radial-gradient(circle, rgba(190, 135, 255, 0.75) 1.3px, transparent 1.3px);
+  background-size: 96px 96px, 64px 64px, 140px 140px;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+}
+
+.center-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, 78vw);
+  height: min(420px, 78vw);
+  display: grid;
+  place-items: center;
+}
+
+.cosmic-core {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.14) 42%, rgba(11, 24, 48, 0.08) 100%);
+  box-shadow: 0 0 140px rgba(106, 162, 255, 0.35), inset 0 0 40px rgba(255,255,255,0.18);
+}
+
+.cosmic-core::before,
+.cosmic-core::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 16%;
+  background: radial-gradient(circle, rgba(100, 210, 255, 0.2), transparent 65%);
+}
+
+.cosmic-core::after {
+  inset: 28%;
+  background: radial-gradient(circle, rgba(255, 135, 235, 0.18), transparent 60%);
+}
+
+.halo {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 1px solid rgba(174, 224, 255, 0.18);
+  box-shadow: 0 0 90px rgba(104, 167, 255, 0.16);
+  animation: rotate 22s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .cosmic-core {
+    width: 180px;
+    height: 180px;
+  }
+
+  .halo {
+    width: 260px;
+    height: 260px;
+  }
+}
