@@ -18,6 +18,60 @@
 			</div>
 		</section>
 
+		<section class="panel" id="hobbies">
+			<div class="card">
+				<p class="eyebrow">Me And My Hobbies</p>
+				<ul>
+					<li>Years of experience in C++, Python. But Have completed some projects in JavaScript.</li>
+					<li>Have a passion for photography; specifically landscape and everything without human faces.</li>
+					<li>Personal Record for solving rubics cube is 33 seconds.</li>
+					<li>Has prepared Bots in Whatsapp for buisnesses, And discord for Fun.</li>
+					<li>Maths, Physics, Chemistry Learner..</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="panel" id="blogs">
+			<div class="card">
+				<p class="eyebrow">BLOGS</p>
+				<h2>My Future posts</h2>
+				<div class="blog-strip-wrapper">
+					<div class="blog-strip" aria-label="Blog post carousel">
+						<article class="blog-card" data-title="Building a smooth portfolio site">
+						<h3>Building a eye for photography</h3>
+						<p>How you nd me can be ready for photography.</p>
+						<button type="button" class="blog-open">Read more</button>
+						<div class="blog-full-content" hidden>
+							<p>Learning what a good photograph means and how to take one.</p>
+							<figure class="blog-media">
+								<img src="https://via.placeholder.com/760x420/1a1a2e/ffffff?text=Portfolio+Preview" alt="Portfolio preview screenshot">
+								<figcaption>caption.</figcaption>
+							</figure>
+							<p>I also discuss the decisions behind the color palette, accessibility improvements, and the c++ used to make each section feel like a polished landing page.</p>
+						</div>
+					</article>
+					<article class="blog-card" data-title="C++ tricks for cleaner code">
+						<h3>C++ tricks for cleaner code</h3>
+						<p>Simple patterns and small utilities that make your C++ programs easier to maintain and extend.</p>
+						<button type="button" class="blog-open">Read more</button>
+						<div class="blog-full-content" hidden>
+							<p>In this article, I explore compact patterns like early returns, descriptive helper functions, and composable utilities. I show how small changes can reduce repetition while keeping intent clear for future edits.</p>
+							<p>The post also includes examples of working with arrays, handling asynchronous flows, and structuring code so that each part has a single responsibility.</p>
+						</div>
+					</article>
+					<article class="blog-card" data-title="Learning algorithms with projects">
+						<h3>Learning algorithms with projects</h3>
+						<p>How project-based practice helped me understand sorting, recursion, and problem solving faster.</p>
+						<button type="button" class="blog-open">Read more</button>
+						<div class="blog-full-content" hidden>
+							<p>This post explains how I learned algorithms by building small apps, solving puzzles, and iterating on code. It shows practical examples of recursion, searching, and sorting embedded in real project tasks.</p>
+							<p>By combining theory with a working project, I found the concepts easier to remember and far more useful in everyday programming.</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
 		<section class="panel" id="projects">
 			<div class="card">
 				<p class="eyebrow">PROJECTS</p>
@@ -28,49 +82,46 @@
 						<span class="project-name">GitHub profile</span>
 						<span class="project-meta">Browse all repositories and contributions.</span>
 					</a>
-					<a class="project-link" href="https://github.com/lotusdynamic/project-one" target="_blank"
+					<a class="project-link" href="https://github.com/lotusdynamic/website" target="_blank"
 						rel="noreferrer">
-						<span class="project-name">Project One</span>
-						<span class="project-meta">A clean starter repository for UI experiments.</span>
+						<span class="project-name">Code For This Website</span>
+						<span class="project-meta">The source code for this website.</span>
 					</a>
 					<!-- <a class="project-link" href="https://github.com/lotusdynamic/project-two" target="_blank" rel="noreferrer">
 						<span class="project-name">Project Two</span>
 						<span class="project-meta">A learning-focused programming project.</span>
-					</a>
-					<a class="project-link" href="https://github.com/lotusdynamic/project-three" target="_blank" rel="noreferrer">
-						<span class="project-name">Project Three</span>
-						<span class="project-meta">A showcase of coding and creative workflow.</span>
 					</a> -->
 				</div>
 			</div>
 		</section>
 
-		<section class="panel" id="hobbies">
-			<div class="card">
-				<p class="eyebrow">HOBBIES</p>
-				<ul>
-					<li>Git page: <a href="https://github.com/lotusdynamic" target="_blank" rel="noreferrer">my
-							projects</a></li>
-					<li>Physics learner</li>
-					<li>Chemistry learner</li>
-					<li>Maths learner</li>
-				</ul>
-			</div>
-		</section>
-
+		
 		<section class="panel" id="contact">
 			<div class="card">
 				<p class="eyebrow">CONTACT</p>
-				<p>Phone: <a href="tel:+00000000">00000000</a></p>
+				<p>Phone: <a href="tel:+918850956893">918850956893</a></p>
+				<p>Discord: <a href="https://discord.com/channels/@me/fromjupiter_to_earth/" target="_blank" rel="noreferrer">DM me here</a></p>
 				<p>Email: <a href="mailto:lotusdynamic@outlook.com">lotusdynamic@outlook.com</a></p>
 				<p>Email: <a href="mailto:ishan120210@outlook.com">ishan120210@outlook.com</a></p>
 				<p>Email: <a href="mailto:ishan120210@gmail.com">ishan120210@gmail.com</a></p>
-				<p>WhatsApp: <a href="https://wa.me/0000000000" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
+				<p>WhatsApp: <a href="https://wa.me/918850956893?text=Hello%20there!%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+					 target="_blank" rel="noreferrer">Chat on WhatsApp</a>
 				</p>
 			</div>
 		</section>
 	</main>
+
+	<div class="blog-modal" id="blogModal" aria-hidden="true">
+		<div class="blog-modal-backdrop" data-close-modal></div>
+		<div class="blog-modal-panel" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle">
+			<button type="button" class="blog-modal-close" aria-label="Close blog">×</button>
+			<h2 class="blog-modal-title" id="blogModalTitle"></h2>
+			<div class="blog-modal-body"></div>
+		</div>
+	</div>
 	<script src="script.js"></script>
 </body>
 
 </html>
+
+<!-- made on 11.43. 15/ Apr 2026 -->
