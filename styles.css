@@ -24,7 +24,7 @@ body {
 
 .page {
   display: grid;
-  grid-template-rows: repeat(3, 100vh);
+  grid-auto-rows: 100vh;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
