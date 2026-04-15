@@ -80,6 +80,50 @@ h1 {
   margin-bottom: 0.7rem;
 }
 
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  color: #eef3ff;
+}
+
+.project-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.project-link {
+  display: block;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  color: #f8fbff;
+  text-decoration: none;
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(130, 177, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.project-name {
+  display: block;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.project-meta {
+  display: block;
+  margin-top: 0.35rem;
+  color: #aab3d1;
+  font-size: 0.95rem;
+}
+
 .card a {
   color: #82b1ff;
   text-decoration: none;
