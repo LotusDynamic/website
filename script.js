@@ -92,11 +92,10 @@ blogStrip.addEventListener('touchend', () => {
 // Start immediately after DOM is ready
 window.addEventListener('DOMContentLoaded', startBlogAutoSlide);
 
-
-document.querySelectorAll('.blog-open').forEach(button => {
-    button.addEventListener('click', () => {
-      const content = button.nextElementSibling;
-      const isOpen = content.classList.toggle('show');
-      button.textContent = isOpen ? 'Read less' : 'Read more';
-    });
-  });
+// document.querySelectorAll('.blog-open').forEach(button => {
+//     button.addEventListener('click', () => {
+//       const content = button.nextElementSibling;
+//       const isOpen = content.classList.toggle('show');
+//       button.textContent = isOpen ? 'Read less' : 'Read more';
+//     });
+//   });

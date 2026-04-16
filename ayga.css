@@ -1,0 +1,297 @@
+:root {
+    color-scheme: dark;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #050509;
+    color: #f5f5f7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    background: radial-gradient(circle at top, rgba(94, 92, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(0, 255, 180, 0.08), transparent 24%),
+        #050509;
+    color: inherit;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Page layout */
+.page { 
+    display: grid;
+    grid-auto-rows: 100dvh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100dvh;
+    scroll-snap-type: y proximity;
+}
+
+.panel {
+    display: grid;
+    place-items: center;
+    scroll-snap-align: start;
+    padding: 2rem;
+}
+
+.card { /* problem for mobile */
+    max-width: 680px;
+    width: 100%;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+
+    /* backdrop-filter: blur(8px); */
+    -webkit-backdrop-filter: blur(14px); 
+}
+
+h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(1.6rem, 5vw, 4.4rem);
+    line-height: 1.05;
+}
+
+.description {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #dce1ff;
+}
+
+
+
+/* Blog strip carousel */
+
+
+/* .blog-strip-wrapper {
+    overflow: hidden;
+    margin-top: 1rem;
+} */
+
+.blog-strip-wrapper {
+  position: relative;
+  overflow: hidden;
+    margin-top: 1rem;
+}
+.blog-strip-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  background: linear-gradient(to left, #050509, transparent);
+  pointer-events: none;
+}
+
+
+.blog-strip {
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+    scroll-behavior: auto;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory; /* keep smooth snapping horizontally */
+}
+
+.blog-strip::-webkit-scrollbar {
+    height: 8px;
+}
+
+.blog-strip::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+}
+
+.blog-card { /* problem for mobile */
+    scroll-snap-align: start;
+    min-width: 240px;
+    padding: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.blog-card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.blog-card p {
+    margin: 0;
+    color: #c5cbec;
+    line-height: 1.6;
+}
+
+.blog-card a {
+    margin-top: auto;
+    color: #82b1ff;
+    text-decoration: none;
+}
+
+.blog-card a:hover,
+.blog-card a:focus-visible {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.blog-open {
+    background: linear-gradient(90deg, #3a1c71, #7655e4, #1885fa);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.blog-open:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(255, 175, 123, 0.6);
+}
+
+/* Expandable blog content */
+.blog-full-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.blog-full-content.show {
+    max-height: 2000px;
+    opacity: 1;
+}
+
+.blog-open:active,
+.blog-open:focus {
+  transform: scale(0.97);
+  box-shadow: 0 0 8px rgba(255, 175, 123, 0.6);
+}
+
+
+/* Project links */
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: clamp(1.45rem, 2.2vw, 2rem);
+    color: #eef3ff;
+}
+
+.project-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-link {
+    display: block;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    color: #f8fbff;
+    text-decoration: none;
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(130, 177, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.project-name {
+    display: block;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.project-meta {
+    display: block;
+    margin-top: 0.35rem;
+    color: #aab3d1;
+    font-size: 0.95rem;
+}
+
+/* Post page styling */
+.post-page {
+    background: radial-gradient(circle at top, rgba(94, 92, 255, 0.12), transparent 28%),
+                radial-gradient(circle at 80% 10%, rgba(0, 255, 180, 0.08), transparent 24%),
+                #050509;
+    color: #f5f5f7;
+    font-family: Inter, system-ui, sans-serif;
+    padding: 1.5rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+    max-width: 900px; /* keeps content narrow on large screens */
+    margin: auto;
+}
+
+/* Header styling */
+.post-header {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    text-align: center;
+    color: #00ffb4;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Paragraph card styling */
+.post-content {
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    color: #dce1ff;
+    background: rgba(255, 255, 255, 0.05);
+    padding: clamp(1rem, 3vw, 1.5rem);;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect only on devices with hover */
+@media (hover: hover) {
+    .post-content:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+}
+
+/* Responsive tweaks */
+@media (max-width: 680px) {
+    .card {
+        padding: 1.75rem;
+    }
+    .description,
+    .card p,
+    .blog-card p {
+        font-size: 0.95rem;
+    }
+    .post-page {
+        padding: 1rem;
+    }
+    .post-content {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        padding: 1rem;
+    }
+    .post-header {
+        font-size: 1.4rem;
+    }
+}
