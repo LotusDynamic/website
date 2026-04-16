@@ -1,77 +1,81 @@
-const blogStrip = document.querySelector('.blog-strip');
-let blogAutoSlideId = null;
-let blogScrollWidth = 0;
-const blogScrollSpeed = 1.2;
+// Starfield background
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let stars = [];
 
-// Touch support
-let isTouching = false;
-let touchStartX = 0;
-let touchScrollLeft = 0;
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  stars = Array.from({ length: 180 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 1.5,
+    alpha: Math.random(),
+    speed: 0.2 + Math.random() * 0.3
+  }));
+}
 
-const initializeInfiniteBlogLoop = () => {
-  if (!blogStrip || blogStrip.dataset.initialized === 'true') return;
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(star => {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+    ctx.fill();
 
-  const cards = Array.from(blogStrip.querySelectorAll('.blog-card'));
-  cards.forEach((card) => {
-    const clone = card.cloneNode(true);
-    blogStrip.appendChild(clone);
+    // Twinkle
+    star.alpha += (Math.random() - 0.5) * 0.05;
+    star.alpha = Math.max(0.1, Math.min(1, star.alpha));
+
+    // Drift
+    star.y += star.speed;
+    if (star.y > canvas.height) {
+      star.y = 0;
+      star.x = Math.random() * canvas.width;
+    }
   });
+  requestAnimationFrame(drawStars);
+}
 
-  blogScrollWidth = blogStrip.scrollWidth / 2;
-  blogStrip.scrollLeft = 0;
-  blogStrip.dataset.initialized = 'true';
-};
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+drawStars();
 
-const stepBlogScroll = () => {
-  if (!blogStrip || !blogScrollWidth || isTouching) {
-    blogAutoSlideId = requestAnimationFrame(stepBlogScroll);
-    return;
-  }
+// Blog modal logic
+const modal = document.getElementById('blogModal');
+const modalTitle = document.getElementById('blogModalTitle');
+const modalBody = modal.querySelector('.blog-modal-body');
+const closeBtn = modal.querySelector('.blog-modal-close');
+const backdrop = modal.querySelector('.blog-modal-backdrop');
 
-  blogStrip.scrollLeft += blogScrollSpeed;
-  if (blogStrip.scrollLeft >= blogScrollWidth) {
-    blogStrip.scrollLeft -= blogScrollWidth;
-  }
+// Open modal when "Read more" is clicked
+document.querySelectorAll('.blog-open').forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.blog-card');
+    const title = card.dataset.title || card.querySelector('h3').textContent;
+    const content = card.querySelector('.blog-full-content').innerHTML;
 
-  blogAutoSlideId = requestAnimationFrame(stepBlogScroll);
-};
-
-const startBlogAutoSlide = () => {
-  initializeInfiniteBlogLoop();
-  if (blogAutoSlideId === null) {
-    blogAutoSlideId = requestAnimationFrame(stepBlogScroll);
-  }
-};
-
-const stopBlogAutoSlide = () => {
-  if (blogAutoSlideId !== null) {
-    cancelAnimationFrame(blogAutoSlideId);
-    blogAutoSlideId = null;
-  }
-};
-
-// Hover pause (desktop)
-blogStrip.addEventListener('mouseenter', stopBlogAutoSlide);
-blogStrip.addEventListener('mouseleave', startBlogAutoSlide);
-
-// Touch drag (mobile)
-blogStrip.addEventListener('touchstart', (e) => {
-  isTouching = true;
-  stopBlogAutoSlide();
-  touchStartX = e.touches[0].pageX;
-  touchScrollLeft = blogStrip.scrollLeft;
+    modalTitle.textContent = title;
+    modalBody.innerHTML = content;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+  });
 });
 
-blogStrip.addEventListener('touchmove', (e) => {
-  if (!isTouching) return;
-  const dx = e.touches[0].pageX - touchStartX;
-  blogStrip.scrollLeft = touchScrollLeft - dx;
-});
+// Close modal
+function closeModal() {
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  modalTitle.textContent = '';
+  modalBody.innerHTML = '';
+}
 
-blogStrip.addEventListener('touchend', () => {
-  isTouching = false;
-  startBlogAutoSlide();
-});
+closeBtn.addEventListener('click', closeModal);
+backdrop.addEventListener('click', closeModal);
 
-// Start immediately
-startBlogAutoSlide();
+// Close with Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modal.classList.contains('open')) {
+    closeModal();
+  }
+});
