@@ -1,13 +1,3 @@
-const blogStrip = document.querySelector('.blog-strip');
-let blogAutoSlideId = null;
-let blogScrollWidth = 0;
-const blogScrollSpeed = 1.2;
-
-// Touch support
-let isTouching = false;
-let touchStartX = 0;
-let touchScrollLeft = 0;
-
 const initializeInfiniteBlogLoop = () => {
   if (!blogStrip || blogStrip.dataset.initialized === 'true') return;
 
