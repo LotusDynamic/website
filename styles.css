@@ -29,7 +29,6 @@ body {
 	scroll-snap-type: y mandatory;
 	overflow-y: scroll;
 	height: 100dvh;
-	scroll-snap-type: y proximity;
 }
 
 .panel {
