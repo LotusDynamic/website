@@ -35,20 +35,51 @@ body {
 	display: grid;
 	place-items: center;
 	scroll-snap-align: start;
-	padding: 2rem;
+	padding: clamp(1rem, 4vw, 2rem);
+	/* scales padding */
+	min-height: 100%;
+	/* fills viewport height */
+	box-sizing: border-box;
 }
 
 .card {
 	max-width: 680px;
 	width: 100%;
-	padding: 2.5rem;
+	padding: clamp(1.5rem, 4vw, 2.5rem);
+	;
 	border: 1px solid rgba(255, 255, 255, 0.08);
-	border-radius: 28px;
+	border-radius: clamp(16px, 4vw, 28px);
 	background: rgba(255, 255, 255, 0.03);
 	backdrop-filter: blur(14px);
 	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
-	-webkit-backdrop-filter: blur(14px); 
+	-webkit-backdrop-filter: blur(14px);
 }
+
+/* Mobile override */
+@media (max-width: 480px) {
+  .card {
+    width: 95%;       /* shrink card to 95% of screen */
+    margin: 0 auto;   /* center it, equal space left/right */
+    padding: 1rem;    /* tighter spacing for small screens */
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 95%;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 16px;
+    
+    /* Height adjustments */
+    height: auto;          /* Let the content define the height */
+    min-height: 200px;     /* Optional: prevents it from looking too flat */
+    max-height: 90vh;      /* Optional: keeps it from being taller than the screen */
+    overflow-y: auto;      /* Adds a scrollbar if content exceeds max-height */
+  }
+}
+
 
 h1 {
 	margin: 0 0 1rem;
@@ -183,7 +214,7 @@ h1 {
 }
 
 .project-name {
-	display: block; 
+	display: block;
 
 	font-weight: 700;
 	font-size: 1.05rem;
@@ -198,56 +229,59 @@ h1 {
 
 /* Page background and base styling */
 .post-page {
-  background: radial-gradient(circle at top, rgba(94, 92, 255, 0.12), transparent 28%),
-              radial-gradient(circle at 80% 10%, rgba(0, 255, 180, 0.08), transparent 24%),
-              #050509;
-  color: #f5f5f7;
-  font-family: Inter, system-ui, sans-serif;
-  padding: 1.5rem;
-  min-height: 100vh;
-  box-sizing: border-box;
+	background: radial-gradient(circle at top, rgba(94, 92, 255, 0.12), transparent 28%),
+		radial-gradient(circle at 80% 10%, rgba(0, 255, 180, 0.08), transparent 24%),
+		#050509;
+	color: #f5f5f7;
+	font-family: Inter, system-ui, sans-serif;
+	padding: 1.5rem;
+	min-height: 100vh;
+	box-sizing: border-box;
 }
 
 /* Header styling */
 .post-header {
-  font-size: clamp(1.8rem, 4vw, 2.4rem); /* scales with screen size */
-  text-align: center;
-  color: #00ffb4;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
+	font-size: clamp(1.8rem, 4vw, 2.4rem);
+	/* scales with screen size */
+	text-align: center;
+	color: #00ffb4;
+	margin-bottom: 1.5rem;
+	font-weight: 600;
 }
 
 /* Paragraph card styling */
 .post-content {
-  max-width: 700px;
-  margin: auto;
-  line-height: 1.8;
-  font-size: 1.05rem;
-  color: #dce1ff;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+	max-width: 700px;
+	margin: auto;
+	line-height: 1.8;
+	font-size: 1.05rem;
+	color: #dce1ff;
+	background: rgba(255, 255, 255, 0.05);
+	padding: 1.5rem;
+	border-radius: 12px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Hover effect for desktop */
 .post-content:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+	transform: translateY(-4px);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* Responsive tweaks */
 @media (max-width: 600px) {
-  .post-page {
-    padding: 1rem;
-  }
-  .post-content {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    padding: 1rem;
-  }
-  .post-header {
-    font-size: 1.6rem;
-  }
+	.post-page {
+		padding: 1rem;
+	}
+
+	.post-content {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		padding: 1rem;
+	}
+
+	.post-header {
+		font-size: 1.6rem;
+	}
 }
